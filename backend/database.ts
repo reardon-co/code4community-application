@@ -11,13 +11,14 @@ const db = new Database(dbSource, (err) => {
         console.log("connected to database")
         db.run(
             `CREATE TABLE post(
-                id      PRIMARY KEY AUTOINCREMENT,
+                id      INTEGER PRIMARY KEY AUTOINCREMENT,
                 content TEXT,
                 date    TEXT
             )`,
             (e) => {
                 if (e) {
-                    console.log("Table already created")
+                    console.error(e)
+                    // console.log("Table already created")
                 }
             }
         )
